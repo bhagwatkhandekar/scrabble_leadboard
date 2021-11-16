@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Leader Board</h1>
+<%= link_to('All Players', players_path)%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Total Games</th>
+      <th>Average Score</th>
+      <th>Total Wins</th>
+      <th>Total Losses</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.players.length %></td>
+        <td><%= user.players.average(:score) %></td>
+        <td><%= user.players.where(match_win: true).length %></td>
+        <td><%= user.players.where(match_win: false).length %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
