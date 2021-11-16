@@ -4,7 +4,6 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    byebug
     if params[:sort].present?
       @players = Player.order(params[:sort])
     else
